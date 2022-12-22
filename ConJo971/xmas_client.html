@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+<select id="SelectA5" onchange="getElementA5()">
+    <option value="friends">
+        Friends
+    </option>
+    <option value="presents">
+        Presents
+    </option>
+</select>
+
+<table id="tableOutput">
+
+</table>
+
+</body>
+<script>
+    let JsonOutput
+    function getElementA5() {
+        let Getvalue = document.getElementById('SelectA5').value;
+        $.get("https://localhost/Github/WEBAP1_2022-2023/ConJo971/xmas_serverA3.php?Table=" + Getvalue , function(data) {
+            console.log(data);
+            console.log(JSON.parse(data));
+            JsonOutput = JSON.parse(data);
+        });
+
+        let TableOutput = "";
+
+        for (leti=0;0<JsonOutput.length;i++){
+
+        }
+
+
+    }
+</script>
+</html>

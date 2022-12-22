@@ -16,7 +16,7 @@
                 for ($i=0;$i<mysqli_num_rows($result);$i++){
                     $row = mysqli_fetch_assoc($result);
 
-                    $Frinds = [
+                    $Frinds[$row['idFriend']] = [
                         "id" => $row['idFriend'],
                         "Friend" => $row['dtFriend'],
                         "fiPresent" => $row['fiPresent']
@@ -28,7 +28,7 @@
             mysqli_free_result($result);
         }
 
-        if ($_GET['Table'] == "friends"){
+        if ($_GET['Table'] == "presents"){
             $query = "SELECT idPresent, dtPresent, dtPrice
                       FROM tblPresent;";
 
@@ -39,7 +39,7 @@
                 for ($i=0;$i<mysqli_num_rows($result);$i++){
                     $row = mysqli_fetch_assoc($result);
 
-                    $Present = [
+                    $Present[$row['idPresent']] = [
                         "id" => $row['idPresent'],
                         "Friend" => $row['dtPresent'],
                         "fiPresen" => $row['dtPrice']
