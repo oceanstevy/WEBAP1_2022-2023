@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+<select id="SelectA6" onchange="getElementA6()">
+    <option value="friends">
+        Friends
+    </option>
+    <option value="presents">
+        Presents
+    </option>
+</select>
+
+<div id="tableOutput">
+
+</div>
+
+</body>
+<script>
+    let JsonOutput = "";
+
+    $( document ).ready(function() {
+        $.get("https://localhost/Github/WEBAP1_2022-2023/ConJo971/xmas_serverA3.php?Table=friends" , function(data) {
+            let friend = JSON.parse(data);
+            let optionFriends = "";
+            
+
+            for (let i=0;i<friend.length;i++){
+                optionFriends += "<option value=" + friend[i].fiPresent + ">";
+                optionFriends += friend[i].Friend;
+                optionFriends += "</option>";
+            }
+
+            $('#SelectA6').html(optionFriends);
+            getElementA6();
+        });
+    });
+
+    function getElementA6() {
+
+        $.get("https://localhost/Github/WEBAP1_2022-2023/ConJo971/xmas_serverA3.php?Table=presents" , function(data) {
+            //console.log(data);
+            //console.log(JSON.parse(data));
+            JsonOutput = JSON.parse(data);
+            loadHtmlElement();
+        });
+    }
+
+    function loadHtmlElement(){
+        let Getvalue = document.getElementById('SelectA6').value;
+        let selectIndex = document.getElementById('SelectA6').selectedIndex;
+        let selectoptions = document.getElementById('SelectA6').options;
+
+
+
+        let Output = "<p>";
+
+        for (let i=0;i<JsonOutput.length;i++){
+
+            if (Getvalue === JsonOutput[i].id){
+
+
+                let name = selectoptions[selectIndex].text;
+
+
+                Output += name + " muss dir eine " + JsonOutput[i].Present + " schenken.";
+                Output += "<br>";
+                Output += "Die " + JsonOutput[i].Present + " kosten " + JsonOutput[i].Price + " Euro.";
+            }
+
+        }
+        Output += "</p>";
+
+        $('#tableOutput').html(Output);
+    }
+
+
+
+</script>
+</html>

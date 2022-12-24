@@ -16,28 +16,43 @@
     </option>
 </select>
 
-<table id="tableOutput">
+<div id="tableOutput">
 
-</table>
+</div>
 
 </body>
 <script>
-    let JsonOutput
+    let JsonOutput = "";
     function getElementA5() {
+
         let Getvalue = document.getElementById('SelectA5').value;
         $.get("https://localhost/Github/WEBAP1_2022-2023/ConJo971/xmas_serverA3.php?Table=" + Getvalue , function(data) {
-            console.log(data);
-            console.log(JSON.parse(data));
+            //console.log(data);
+            //console.log(JSON.parse(data));
             JsonOutput = JSON.parse(data);
+            loadHtmlElement();
         });
-
-        let TableOutput = "";
-
-        for (leti=0;0<JsonOutput.length;i++){
-
-        }
-
-
     }
+
+    function loadHtmlElement(){
+        let TableOutput = "<table>";
+
+        for (let i=0;i<JsonOutput.length;i++){
+
+            TableOutput += "<tr>";
+
+            for (const index in JsonOutput[i]) {
+                TableOutput += "<td>" + JsonOutput[i][index] + "</td>";
+            }
+
+            TableOutput += "</tr>";
+        }
+        TableOutput += "</table>";
+
+        $('#tableOutput').html(TableOutput);
+    }
+
+
+
 </script>
 </html>

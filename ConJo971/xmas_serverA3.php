@@ -10,13 +10,13 @@
                   FROM tblFriend;";
 
             $result = f_db_queryWithResultSet($dbc,$query);
-            $Frinds = [];
+            $Friends = [];
 
             if (mysqli_num_rows($result) > 0){
                 for ($i=0;$i<mysqli_num_rows($result);$i++){
                     $row = mysqli_fetch_assoc($result);
 
-                    $Frinds[$row['idFriend']] = [
+                    $Friends[] = [
                         "id" => $row['idFriend'],
                         "Friend" => $row['dtFriend'],
                         "fiPresent" => $row['fiPresent']
@@ -24,7 +24,7 @@
 
                 }
             }
-            echo json_encode($Frinds);
+            echo json_encode($Friends);
             mysqli_free_result($result);
         }
 
@@ -39,10 +39,10 @@
                 for ($i=0;$i<mysqli_num_rows($result);$i++){
                     $row = mysqli_fetch_assoc($result);
 
-                    $Present[$row['idPresent']] = [
+                    $Present[] = [
                         "id" => $row['idPresent'],
-                        "Friend" => $row['dtPresent'],
-                        "fiPresen" => $row['dtPrice']
+                        "Present" => $row['dtPresent'],
+                        "Price" => $row['dtPrice']
                     ];
 
                 }
