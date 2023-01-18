@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XMAS Client</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.get("https://foxi.ltam.lu/1TPIF2/gromi088/public/xmax_serverA4.php?table=friend", function (data) {
+
+                //console.log(data);
+                let json = JSON.stringify(data)
+                let parse = JSON.parse(json);
+                console.log(parse);
+
+                let tableOutput = "";
+
+                for (let i = 0; i <= parse.length; i++) {
+                    tableOutput += "<tr><td>" + parse[i] + "</td></tr>";
+                    $('#test').innerHTML += "Test " + i;
+                }
+
+
+            });
+        })
+    </script>
+</head>
+<body>
+    <div id="test"></div>
+    <table border="1px">
+        <tr>
+            <th>Name</th>
+            <th>Geschenk</th>
+        </tr>
+    </table>
+</body>
+</html>
