@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jukebox</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      // FUNKTION: datalist füllen
+      function fillDatalist(data){
+
+        // Array durchgehen und Liste füllen
+
+		// Liste aktualisieren
+    
+      }
+
+      // FUNKTION: Tabelle laden
+      function fillSongTable(){
+          // Suchstring ermitteln
+
+		  // Suchstring an Server schicken mittls der jQuery Funktion $.getJSON() 
+            $.getJSON()
+          // Erhaltenes Array durchgehen und Tabelle füllen
+
+		  // Tabelle aktualisieren
+
+      }
+
+      // Ausführung nach dem Laden der Seite
+      $(function(){
+        // Alle Artisten laden und Liste füllen mittels $.getJSON
+        $.getJSON("musicserver.php?artist=all", function(result){
+            $.each(result, function (i, field){
+                $("div").append(field + " ");
+            })
+        })
+        // Beim Ändern der Searchbox laden
+      });
+    </script>
+    <style>
+        table, td, th{
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin: 10px;
+        }
+        th {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <label for="artistsinput">Artist: </label>
+    <input type="text" id="artistsinput" list="artists">
+    <datalist id="artists">
+    </datalist>
+    <table>
+        <thead>
+            <tr>
+                <th>Artist</th>
+                <th>Songs</th>
+            </tr>
+        <tbody id="songtablebody">
+        </tbody>
+    </table>
+</body>
+</html>

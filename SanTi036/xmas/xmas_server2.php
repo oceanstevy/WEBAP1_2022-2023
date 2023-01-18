@@ -79,7 +79,7 @@ if (isset($_GET['friend'])) {
               FROM tblFriends AS f
               INNER JOIN tblPresents AS p
               ON f.fiPresent = p.idPresent
-              WHERE idFriend = '" . $row['idFriend'] . "'
+              WHERE f.idFriend = '" . $row['idFriend'] . "'
               ORDER BY f.idFriend";
 
         $result = mysqli_query($dbc, $query);
