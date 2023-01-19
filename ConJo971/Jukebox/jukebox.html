@@ -26,7 +26,7 @@
           }
 
 		  // Suchstring an Server schicken mittls der jQuery Funktion $.getJSON()
-          $.get("https://localhost/School/WEBAP/Jukebox/musicserver.php?Seachartist="+Value , function(data) {
+          $.get("https://localhost/Github/WEBAP1_2022-2023/ConJo971/Jukebox/musicserver.php?Seachartist="+Value , function(data) {
 
               let SongsArray = JSON.parse(data);
 
@@ -53,7 +53,7 @@
       // Ausführung nach dem Laden der Seite
       $( document ).ready(function(){
         // Alle Artisten laden und Liste füllen mittels $.getJSON
-          $.get("https://localhost/School/WEBAP/Jukebox/musicserver.php?artist=all" , function(data) {
+          $.get("https://localhost/Github/WEBAP1_2022-2023/ConJo971/Jukebox/musicserver.php?artist=all" , function(data) {
               let Songs = JSON.parse(data);
 
               let ArtistArray = [];

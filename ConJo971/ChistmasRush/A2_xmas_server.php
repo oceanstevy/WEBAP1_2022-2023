@@ -1,5 +1,5 @@
 <?php
-// zugriff5daten Datenbank
+// zugriff daten Datenbank
 require_once("inc/sqlconfig.php");
 
 // verbindng Datenbank

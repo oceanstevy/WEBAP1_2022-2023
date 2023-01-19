@@ -1,11 +1,11 @@
 <?php
-include 'Include_Functions/Functions.php';
+include 'inc/sqlconfig.php';
 
 if (isset($_GET['Table'])){
 
     $dbc = f_db_Connect(false);
 
-    if ($_GET['Table'] == "friend"){
+    if ($_GET['table'] == "friend"){
         $query = "SELECT idFriend, dtFriend, fiPresent
                   FROM tblFriend;";
 
@@ -28,7 +28,7 @@ if (isset($_GET['Table'])){
         mysqli_free_result($result);
     }
 
-    if ($_GET['Table'] == "present"){
+    if ($_GET['table'] == "present"){
         $query = "SELECT idPresent, dtPresent, dtPrice
                       FROM tblPresent;";
 
