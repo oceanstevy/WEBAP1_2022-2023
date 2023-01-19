@@ -6,12 +6,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
+<style>
+    table {
+        margin: 25px 0;
+        border-spacing: 0 20px;
+    }
+    td {
+        border: 1px solid black;
+        padding: 10px;
+        font-size: 1.6rem;
+    }
+    select {
+        font-size: 1.5rem;
+    }
+</style>
 
 <select id="SelectA5" onchange="getElementA5()">
-    <option value="friends">
+    <option value="friend">
         Friends
     </option>
-    <option value="presents">
+    <option value="present">
         Presents
     </option>
 </select>
@@ -22,11 +36,16 @@
 
 </body>
 <script>
+    $( document ).ready(function() {
+        getElementA5();
+    });
+
     let JsonOutput = "";
     function getElementA5() {
 
-        let Getvalue = document.getElementById('SelectA5').value;
-        $.get("https://localhost/Github/WEBAP1_2022-2023/ConJo971/xmas_serverA3.php?Table=" + Getvalue , function(data) {
+        let Getvalue = $("#SelectA5").val();
+
+        $.get("https://localhost/School/WEBAP/ChristmasRush/A4_xmas_server.php?table=" + Getvalue , function(data) {
             //console.log(data);
             //console.log(JSON.parse(data));
             JsonOutput = JSON.parse(data);
@@ -51,8 +70,6 @@
 
         $('#tableOutput').html(TableOutput);
     }
-
-
 
 </script>
 </html>

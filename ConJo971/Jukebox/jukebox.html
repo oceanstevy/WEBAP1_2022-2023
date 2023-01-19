@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jukebox</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      // FUNKTION: datalist füllen
+      fillDatalist();
+      function fillDatalist(data){
+
+
+        // Array durchgehen und Liste füllen
+
+		// Liste aktualisieren
+
+      }
+
+      // FUNKTION: Tabelle laden
+      fillSongTable();
+      function fillSongTable(){
+          // Suchstring ermitteln
+          let Value = $("#artistsinput").val();
+          if (Value === undefined){
+              Value = "";
+          }
+
+		  // Suchstring an Server schicken mittls der jQuery Funktion $.getJSON()
+          $.get("https://localhost/School/WEBAP/Jukebox/musicserver.php?Seachartist="+Value , function(data) {
+
+              let SongsArray = JSON.parse(data);
+
+              // Erhaltenes Array durchgehen und Tabelle füllen
+              let SongTable = "";
+              console.log(SongsArray);
+              SongsArray.forEach(function(Element) {
+                  SongTable += "<tr>";
+                    SongTable += "<td>";
+                        SongTable += Element['artist'];
+                    SongTable += "</td>";
+                    SongTable += "<td>";
+                        SongTable += Element['title'];
+                    SongTable += "</td>";
+                  SongTable += "</tr>";
+
+              });
+
+              // Tabelle aktualisieren
+              $('#songtablebody').html(SongTable);
+          });
+      }
+
+      // Ausführung nach dem Laden der Seite
+      $( document ).ready(function(){
+        // Alle Artisten laden und Liste füllen mittels $.getJSON
+          $.get("https://localhost/School/WEBAP/Jukebox/musicserver.php?artist=all" , function(data) {
+              let Songs = JSON.parse(data);
+
+              let ArtistArray = [];
+              Songs.forEach(function (i) {
+                  ArtistArray.push(i["artist"]);
+              });
+
+              var ArtistArrayUnique = [...new Set(ArtistArray)]
+
+              let SongArtist = "";
+              ArtistArrayUnique.forEach(function(Artist) {
+                  SongArtist += "<option value='"+Artist+"'>";
+              });
+
+              $('#artists').html(SongArtist);
+          });
+      });
+
+      // Beim Ändern der Searchbox laden
+      $(document).ready(function(){
+        $("#artistsinput").change(function() {
+            fillSongTable();
+        });
+      });
+
+    </script>
+    <style>
+        table, td, th{
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin: 10px;
+        }
+        th {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+<label for="artistsinput">Artist: </label>
+<input type="text" id="artistsinput" list="artists">
+<datalist id="artists">
+</datalist>
+<table>
+    <thead>
+    <tr>
+        <th>Artist</th>
+        <th>Songs</th>
+    </tr>
+    <tbody id="songtablebody">
+    </tbody>
+</table>
+</body>
+</html>

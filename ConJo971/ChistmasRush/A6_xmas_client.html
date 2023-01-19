@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+<select id="SelectA6" onchange="getElementA6()">
+    <option value="friends">
+        Friends
+    </option>
+    <option value="presents">
+        Presents
+    </option>
+</select>
+
+<div id="tableOutput">
+
+</div>
+
+</body>
+<script>
+
+    $( document ).ready(function() {
+        $.get("https://localhost/School/WEBAP/ChristmasRush/A4_xmas_server.php?table=friend" , function(data) {
+            let friend = JSON.parse(data);
+            let optionFriends = "";
+            console.log(friend);
+            for (let i=0;i<friend.length;i++){
+                optionFriends += "<option value=" + friend[i].Present + ">";
+                optionFriends += friend[i].friend;
+                optionFriends += "</option>";
+            }
+
+            $('#SelectA6').html(optionFriends);
+
+            getElementA6();
+        });
+    });
+
+    function getElementA6() {
+
+        $.get("https://localhost/School/WEBAP/ChristmasRush/A4_xmas_server.php?table=present" , function(data) {
+
+            Present = JSON.parse(data);
+
+
+
+            let Getvalue = document.getElementById('SelectA6').value;
+            let selectIndex = document.getElementById('SelectA6').selectedIndex;
+            let selectoptions = document.getElementById('SelectA6').options;
+
+            let Output = "<p>";
+
+            for (let i=0;i<Present.length;i++){
+
+                if (Getvalue === Present[i].id){
+
+
+                    let name = selectoptions[selectIndex].text;
+
+
+                    Output += name + " muss dir eine " + Present[i].present + " schenken.";
+                    Output += "<br>";
+                    Output += "Die " + Present[i].present + " kosten " + Present[i].price + " Euro.";
+                    Output += "<br>";
+                }
+
+            }
+            Output += "</p>";
+
+            $('#tableOutput').html(Output);
+
+
+
+        });
+
+    }
+
+
+
+</script>
+</html>
