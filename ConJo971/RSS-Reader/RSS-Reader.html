@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        img{
+            width: 500px;
+        }
+    </style>
+</head>
+<script>
+    $(function(){
+        // Alle Artisten laden und Liste füllen mittels $.getJSON
+        $.get("https://www.rtl.lu/rss/headlines" , data => {
+            console.log(data);
+            $(data).find('item').each(function(){
+                console.log($(this));
+                let title = $(this).find("title").text();
+                let date = $(this).find("pubDate").text();
+                let link = $(this).find("link").text();
+                let description = $(this).find("description").text();
+                let img = $(this).find("enclosure").attr("url");
+
+                let content = "<div><h2>"+title+"</h2><p>"+description+"</p><p>"+date+"</p><a href='"+link+"'>"+link+"</a><br><img src='"+img+"'></div>";
+
+                $("#content").append(content);
+            });
+
+        });
+
+
+
+    });
+</script>
+<body>
+    <div id="content"></div>
+
+</body>
+</html>

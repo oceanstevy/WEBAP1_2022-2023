@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Jukebox</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script>
       // FUNKTION: datalist füllen
-      fillDatalist();
       function fillDatalist(data){
-
+          let SongArtist = "";
 
         // Array durchgehen und Liste füllen
+          data.forEach(function(Object) {
+              SongArtist += "<option value='" + Object.artist + "'>";
+          });
 
 		// Liste aktualisieren
-
+          $('#artists').html(SongArtist);
       }
 
       // FUNKTION: Tabelle laden
@@ -26,13 +28,11 @@
           }
 
 		  // Suchstring an Server schicken mittls der jQuery Funktion $.getJSON()
-          $.get("https://localhost/Github/WEBAP1_2022-2023/ConJo971/Jukebox/musicserver.php?Seachartist="+Value , function(data) {
-
-              let SongsArray = JSON.parse(data);
+          $.getJSON("https://localhost/Github/WEBAP1_2022-2023/ConJo971/Jukebox/musicserver.php?Seachartist="+Value , function(SongsArray) {
 
               // Erhaltenes Array durchgehen und Tabelle füllen
               let SongTable = "";
-              console.log(SongsArray);
+
               SongsArray.forEach(function(Element) {
                   SongTable += "<tr>";
                     SongTable += "<td>";
@@ -51,32 +51,12 @@
       }
 
       // Ausführung nach dem Laden der Seite
-      $( document ).ready(function(){
+      $(function(){
         // Alle Artisten laden und Liste füllen mittels $.getJSON
-          $.get("https://localhost/Github/WEBAP1_2022-2023/ConJo971/Jukebox/musicserver.php?artist=all" , function(data) {
-              let Songs = JSON.parse(data);
-
-              let ArtistArray = [];
-              Songs.forEach(function (i) {
-                  ArtistArray.push(i["artist"]);
-              });
-
-              var ArtistArrayUnique = [...new Set(ArtistArray)]
-
-              let SongArtist = "";
-              ArtistArrayUnique.forEach(function(Artist) {
-                  SongArtist += "<option value='"+Artist+"'>";
-              });
-
-              $('#artists').html(SongArtist);
-          });
-      });
+          $.getJSON("https://localhost/Github/WEBAP1_2022-2023/ConJo971/Jukebox/musicserver.php?artist=all" , fillDatalist);
 
       // Beim Ändern der Searchbox laden
-      $(document).ready(function(){
-        $("#artistsinput").change(function() {
-            fillSongTable();
-        });
+          $("#artistsinput").keyup(fillSongTable);
       });
 
     </script>

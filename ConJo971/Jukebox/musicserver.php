@@ -5,7 +5,7 @@ require_once("inc/sqlconfig.php");
 // GET Parameter prüfen und auswerten, Query schreiben
 if (isset($_GET['artist'])){
     if ($_GET['artist'] === "all"){
-        $query = "SELECT id, title, artist
+        $query = "SELECT DISTINCT artist
                   FROM song";
     }
 
@@ -32,9 +32,11 @@ mysqli_set_charset($dbc, "utf8mb4");
 // Anfrage Datenbank
 $result = mysqli_query($dbc,$query);
 
-if ($result){
-    $resultArray = array();
+$resultArray = array();
 
+if ($result){
+
+    // Array Erstellen
     for ($i=0;$i<mysqli_num_rows($result);$i++){
         $resultArray[] = mysqli_fetch_assoc($result);
     }
@@ -46,8 +48,7 @@ mysqli_free_result($result);
 mysqli_close($dbc);
 
 // HTTP Header setzen und JSON senden
-
-//header('Content-Type: application/json');
+header('Content-Type: application/json');
 
 echo json_encode($resultArray);
 
