@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        img{
+            width: 500px;
+        }
+    </style>
+</head>
+<script>
+    $(function(){
+        // Alle Artisten laden und Liste füllen mittels $.getJSON
+        $.get("https://localhost/Github/WEBAP1_2022-2023/ConJo971/RSS-Reader/RSS-Reader.php" , data => {
+            $("#content").html(data);
+        });
+
+    });
+</script>
+<body>
+<div id="content"></div>
+
+</body>
+</html>
