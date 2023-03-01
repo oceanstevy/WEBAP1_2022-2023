@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="foxi.ltam.lu" id="a5448d06-8b2e-4e4d-820e-82ef9f5e7ed8" port="22" nameFormat="DESCRIPTIVE" username="gromi088" />
+    </configs>
+  </component>
+</project>

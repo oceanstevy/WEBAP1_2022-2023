@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal" created-in="PS-212.5457.49">
+    <data-source name="MySQL" uuid="fe34c12a-617a-4ae0-95b0-08686becc5ba">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-mapping />
+      <ssh-properties>
+        <enabled>false</enabled>
+        <ssh-config-id>a5448d06-8b2e-4e4d-820e-82ef9f5e7ed8</ssh-config-id>
+      </ssh-properties>
+    </data-source>
+    <data-source name="gromi088@localhost" uuid="0378f711-de30-4a0a-ba97-e2d7a5db303e">
+      <database-info product="MySQL" version="5.5.5-10.1.48-MariaDB-0+deb9u1" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)" dbms="MARIADB" exact-version="10.1.48" exact-driver-version="8.0">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>gromi088</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema" qname="@" />
+        </introspection-scope>
+      </schema-mapping>
+      <ssh-properties>
+        <enabled>true</enabled>
+        <ssh-config-id>a5448d06-8b2e-4e4d-820e-82ef9f5e7ed8</ssh-config-id>
+      </ssh-properties>
+    </data-source>
+  </component>
+</project>

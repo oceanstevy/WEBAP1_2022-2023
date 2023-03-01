@@ -8,30 +8,33 @@
         $(document).ready(function(){
             $.get("https://foxi.ltam.lu/1TPIF2/gromi088/public/xmax_serverA4.php?table=friend", function (data) {
 
-                //console.log(data);
-                let json = JSON.stringify(data)
-                let parse = JSON.parse(json);
+               // console.log(data);
+                //let json = JSON.stringify(data)
+                let parse = JSON.parse(data);
                 console.log(parse);
 
-                let tableOutput = "";
+                let tableOutput = "    <table border=\"1px\">\n" +
+                    "<tr>\n" +
+                    "            <th>Name</th>\n" +
+                    "            <th>Geschenk</th>\n" +
+                    "        </tr>";
 
-                for (let i = 0; i <= parse.length; i++) {
-                    tableOutput += "<tr><td>" + parse[i] + "</td></tr>";
-                    $('#test').innerHTML += "Test " + i;
+                for (let i = 0; i < parse.length; i++) {
+                    tableOutput += "<tr><td>" + parse[i].friend + "</td><td>" + parse[i].present + "</td></tr>";
+
+                   // console.log(parse[i]);
                 }
+                tableOutput += " </table>";
 
+              $('#Output').append(tableOutput);
 
             });
         })
     </script>
 </head>
 <body>
-    <div id="test"></div>
-    <table border="1px">
-        <tr>
-            <th>Name</th>
-            <th>Geschenk</th>
-        </tr>
-    </table>
+    <div id="Output">
+
+    </div>
 </body>
 </html>

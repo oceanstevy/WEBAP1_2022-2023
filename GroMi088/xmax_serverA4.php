@@ -19,7 +19,7 @@ $connect = mysqli_connect('localhost','gromi088','2003101603833','gromi088');
                 ];
             }
             $json = json_encode($friends);
-            header('Content-Type: application/json');
+            //header('Content-Type: application/json');
             echo $json;
 
         }elseif ($_GET['table'] === "present"){
@@ -37,7 +37,7 @@ $connect = mysqli_connect('localhost','gromi088','2003101603833','gromi088');
                 ];
             }
             $json2 = json_encode($presents);
-            header('Content-Type: application/json');
+            //header('Content-Type: application/json');
             echo $json2;
 
         }else echo "table wert ungültig";
