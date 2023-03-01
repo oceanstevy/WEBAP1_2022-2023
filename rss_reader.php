@@ -8,8 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-
-
 <?php
  $getContent = file_get_contents(" http://feeds.feedburner.com/ign/all");
  $turnintoxml = simplexml_load_string($getContent);

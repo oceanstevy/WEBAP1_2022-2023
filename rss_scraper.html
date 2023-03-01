@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+        $.get('http://foxi.ltam.lu/www/1TPIF2/kozda362/webap/rss/rss_reader.php', function (data) {
+            $("#feed").html(data).show();
+        })
+
+    </script></head>
+<body>
+<div id="feed">
+    <h1> RTL Headlines</h1>
+</div>
+</body>
+</html>

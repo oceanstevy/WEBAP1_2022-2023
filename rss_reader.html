@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<script>
+    $(function(){
+        let rssFeed = "https://www.rtl.lu/rss/headlines";
+
+        $.get(rssFeed, function(data){
+
+            $(data).find("item").each(function(){
+            let title = $(this).find("title").text();
+            let date = $(this).find("date").text();
+            let link = $(this).find("link").text();
+            let description = $(this).find("description").text();
+            $("#feed").append("<div class='item'><a href='" + link + "'><h3>" + title + "</h3></a></div>")
+            });
+        }, "xml");
+    });
+
+</script>
+<div id="feed">
+
+</div>
+</body>
+</html>
