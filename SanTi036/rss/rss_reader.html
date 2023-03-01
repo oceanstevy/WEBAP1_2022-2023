@@ -8,8 +8,8 @@
   // Ausführen nach dem Laden der Seite:
   $(function(){
 
-    let rssFeed = "feed.xml";                              // Alternative 1: lokale Datei
-    //let rssFeed= "https://www.rtl.lu/rss/headlines";     // Alternative 2: rtl.lu News
+    //let rssFeed = "feed.xml";                              // Alternative 1: lokale Datei
+    let rssFeed= "http://feeds.feedburner.com/ign/all";     // Alternative 2: rtl.lu News
 
     $.get(rssFeed, function(data) {
 
