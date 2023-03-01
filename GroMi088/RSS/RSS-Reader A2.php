@@ -11,7 +11,7 @@
 <?php
     echo "<h1>Mein RSS Feed</h1>";
 
-   $feed = file_get_contents('http://feeds.feedburner.com/ign/all');
+   $feed = file_get_contents('RSS.xml');
    $rss = simplexml_load_string($feed);
 
    foreach($rss->channel->item as $item){

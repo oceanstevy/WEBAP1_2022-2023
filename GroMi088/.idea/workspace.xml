@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ca5f345-ef98-46c3-92a8-d184b414de9e" name="Changes" comment="Xmas and Jukebox">
-      <change beforePath="$PROJECT_DIR$/XMAS_Client A5.html" beforeDir="false" afterPath="$PROJECT_DIR$/XMAS_Client A5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xmax_serverA4.php" beforeDir="false" afterPath="$PROJECT_DIR$/xmax_serverA4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RSS/RSS-Reader A2.php" beforeDir="false" afterPath="$PROJECT_DIR$/RSS/RSS-Reader A2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RSS/RSS-Reader A4.html" beforeDir="false" afterPath="$PROJECT_DIR$/RSS/RSS-Reader A4.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +80,7 @@
       <workItem from="1673852636903" duration="90000" />
       <workItem from="1674060023964" duration="6014000" />
       <workItem from="1674142942692" duration="41000" />
+      <workItem from="1677692258294" duration="2288000" />
     </task>
     <task id="LOCAL-00001" summary="Xmas and Jukebox">
       <created>1674069098070</created>
