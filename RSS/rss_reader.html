@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercise 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+        $.get('https://www.rtl.lu/rss/headlines', function (data) {
+            $(data).find("item").each(function (){
+                let title = $(this).find("title").text() ;
+                let date = $(this).find("pubDate").text() ;
+                let link = $(this).find("link").text() ;
+                let description = $(this).find("description").text() ;
+
+                $("#feed").append("<div class='item'>" +
+                    "<a href='"+ link +"'>" +
+                    "<h3>" + title + "</h3></a>" +
+                    "<p>"+ date +"</p>" +
+                    "<p>"+ description +"</p>" +
+                    "</div>");
+            })
+
+        })
+
+    </script>
+</head>
+<body>
+<div id="feed">
+    <h1> RTL Headlines</h1>
+</div>
+</body>
+</html>
